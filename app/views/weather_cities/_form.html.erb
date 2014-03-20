@@ -1,0 +1,41 @@
+<%= form_for(@weather_city) do |f| %>
+  <% if @weather_city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weather_city.errors.count, "error") %> prohibited this weather_city from being saved:</h2>
+
+      <ul>
+      <% @weather_city.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :temperature %><br>
+    <%= f.text_field :temperature %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  <script type="text/javascript">
+    url = "http://api.openweathermap.org/data/2.5/weather?q=Austin&mode=json&units=imperial";
+    $.ajax({
+        url: url,
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            alert("The temperature is: " + data.main.temp);
+        },
+        error: function(xhr, status) {
+            console.log("There was an error");
+        }
+    });
+  </script>
+<% end %>
