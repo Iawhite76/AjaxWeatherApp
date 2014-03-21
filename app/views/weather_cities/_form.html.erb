@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.hidden_field :temperature %><br>
-
+    <value=" ">
   </div>
 
   <button id="temp">Click to log City Temp!</button>
@@ -35,7 +35,8 @@
         success: function (data) {
             console.log(data);
             // alert("The temperature is: " + data.main.temp);
-            $("#weather_city_temperature").val(data.main.temp);
+            var temp = data.main.temp
+            $("#weather_city_temperature").val(temp);
             $('form').submit();
         },
         error: function(xhr, status) {
