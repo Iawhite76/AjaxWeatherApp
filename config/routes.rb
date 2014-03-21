@@ -1,5 +1,6 @@
 WeatherApp::Application.routes.draw do
   resources :weather_cities
+  root "weather_cities#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

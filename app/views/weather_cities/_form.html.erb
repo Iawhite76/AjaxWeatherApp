@@ -19,23 +19,29 @@
     <%= f.label :temperature %><br>
     <%= f.text_field :temperature %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <button id="temp">Click to log City Temp!</button>
 
   <script type="text/javascript">
-    url = "http://api.openweathermap.org/data/2.5/weather?q=Austin&mode=json&units=imperial";
+  $("#temp").on('click', function (e) {
+    e.preventDefault();
+    var cityName = $("#weather_city_name").val();
+    url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&mode=json&units=imperial";
     $.ajax({
         url: url,
         type: "get",
         dataType: "json",
         success: function (data) {
             console.log(data);
-            alert("The temperature is: " + data.main.temp);
+            // alert("The temperature is: " + data.main.temp);
+            $("#weather_city_temperature").val(data.main.temp);
+            $('form').submit();
         },
         error: function(xhr, status) {
             console.log("There was an error");
         }
     });
+  });
+
   </script>
 <% end %>
