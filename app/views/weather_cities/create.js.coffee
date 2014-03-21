@@ -2,3 +2,4 @@
 // $('body').append("<%= @weather_city.to_json%>")
 $('form').remove();
 $('body').append("<%= j render 'show' %>")
+
