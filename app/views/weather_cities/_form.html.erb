@@ -1,3 +1,4 @@
+<!-- add remote:true to form_for and when form is submitted fields in form will be automatically submitted as an ajax request  -->
 <%= form_for(@weather_city, remote: true) do |f| %>
   <% if @weather_city.errors.any? %>
     <div id="error_explanation">
